@@ -1,0 +1,32 @@
+/* Import Font chữ đẹp từ Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark; /* Bắt buộc chế độ tối */
+}
+
+body {
+  background-color: #0f172a; /* Màu nền chủ đạo */
+  color: #f1f5f9; /* Màu chữ sáng */
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden; /* Chặn cuộn ngang */
+}
+
+/* Tùy chỉnh thanh cuộn cho đẹp */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
