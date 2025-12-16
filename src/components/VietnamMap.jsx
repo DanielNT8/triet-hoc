@@ -237,7 +237,10 @@ const VietnamMap = () => {
                     src={activePoint.image} 
                     alt={activePoint.name} 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    onError={(e) => { e.target.src = "https://via.placeholder.com/600x400?text=Vietnam"; }}
+                    onError={(e) => { 
+                    e.target.style.display = 'none'; // Ẩn ảnh bị lỗi
+                    e.target.parentNode.style.backgroundColor = '#1e293b'; // Đổ màu nền xám cho khung
+                    }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
                </div>

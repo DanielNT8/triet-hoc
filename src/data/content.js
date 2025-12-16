@@ -7,7 +7,7 @@ export const MAP_POINTS = [
     id: 'hoang-sa',
     name: "QĐ. Hoàng Sa",
     coordinates: [111.2, 16.5],
-    image: "https://img.nhandan.com.vn/Files/Images/2021/01/19/hoang_sa-1611026066060.jpg", 
+    image: "", 
     desc: "Đà Nẵng - Chủ quyền biển đảo",
     details: "Vùng lãnh thổ thiêng liêng. Phát triển kinh tế biển phải gắn liền với bảo vệ an ninh quốc phòng."
   },
@@ -15,7 +15,7 @@ export const MAP_POINTS = [
     id: 'truong-sa',
     name: "QĐ. Trường Sa",
     coordinates: [114.5, 10.0],
-    image: "https://cdn.tuoitre.vn/thumb_w/730/2022/5/6/dao-truong-sa-lon-1651806878486208306026.jpg", 
+    image: "", 
     desc: "Khánh Hòa - Pháo đài tiền tiêu",
     details: "Biểu tượng của ý chí Việt Nam giữa biển khơi. Nơi khẳng định chủ quyền thông qua sự hiện diện dân sự và kinh tế."
   }
@@ -129,7 +129,7 @@ export const MILESTONES = [
     duration: '27/7/2012',
     coordinates: [37.61, 55.75],
     desc: 'Trong khuôn khổ chuyến thăm chính thức Liên bang Nga của Chủ tịch nước Trương Tấn Sang. Đưa ra tuyên bố chung về nâng cấp quan hệ ĐTCL Toàn Diện.',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Saint_Basil%27s_Cathedral_and_the_Red_Square.jpg/256px-Saint_Basil%27s_Cathedral_and_the_Red_Square.jpg'
+    image: ''
   },
   {
     id: 'm13', year: '2014',
@@ -138,7 +138,7 @@ export const MILESTONES = [
     duration: '11/11/2011',
     coordinates: [-157.85, 21.30],
     desc: 'Ký bên lề APEC (Hiệu lực từ 2014).',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Waikiki_Beach_Honolulu_Hawaii.jpg/256px-Waikiki_Beach_Honolulu_Hawaii.jpg'
+    image: ''
   },
   {
     id: 'm14', year: '2015',
@@ -147,7 +147,7 @@ export const MILESTONES = [
     duration: '05/05/2015',
     coordinates: [105.85, 21.02],
     desc: 'Ký kết tại Phủ Chủ tịch (Thúc đẩy FDI Hàn Quốc).',
-    image: 'https://vcdn1-dulich.vnecdn.net/2022/05/11/hoan-kiem-lake-7673-1652237235.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=2wB1c0kU7j7iJz4gWb_fWA'
+    image: ''
   },
   {
     id: 'm15', year: '2015',
@@ -156,7 +156,7 @@ export const MILESTONES = [
     duration: '29/05/2015',
     coordinates: [70.29, 53.08],
     desc: 'Ký Hiệp định với Liên minh Kinh tế Á - Âu.',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Borovoe_lake.jpg/256px-Borovoe_lake.jpg'
+    image: ''
   },
   {
     id: 'm16', year: '2015',
@@ -165,7 +165,7 @@ export const MILESTONES = [
     duration: '22/11/2015',
     coordinates: [101.68, 3.13],
     desc: 'Ký Tuyên bố hình thành AEC (Hiệu lực 31/12/2015).',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Petronas_Panorama_II.jpg/256px-Petronas_Panorama_II.jpg'
+    image: ''
   },
   {
     id: 'm17', year: '2016',
@@ -174,7 +174,7 @@ export const MILESTONES = [
     duration: '3/9/2016',
     coordinates: [105.85, 21.02],
     desc: 'Thủ tướng Ấn Độ Narendra Modi thăm chính thức Việt Nam theo lời mời của Thủ tướng Nguyễn Xuân Phúc. Đưa ra tuyên bố chung về nâng cấp quan hệ ĐTCL Toàn Diện.',
-    image: 'https://vcdn1-dulich.vnecdn.net/2022/05/11/hoan-kiem-lake-7673-1652237235.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=2wB1c0kU7j7iJz4gWb_fWA'
+    image: ''
   },
   {
     id: 'm18', year: '2019',
@@ -183,7 +183,7 @@ export const MILESTONES = [
     duration: '08/03/2018',
     coordinates: [-70.66, -33.44],
     desc: 'Ký Hiệp định Đối tác Toàn diện và Tiến bộ xuyên Thái Bình Dương.',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Santiago_de_Chile_desde_el_cerro_Santa_Lucia.jpg/256px-Santiago_de_Chile_desde_el_cerro_Santa_Lucia.jpg'
+    image: ''
   },
   {
     id: 'm19', year: '2020',
@@ -192,7 +192,7 @@ export const MILESTONES = [
     duration: '30/06/2019',
     coordinates: [105.85, 21.02],
     desc: 'Ký Hiệp định Thương mại Tự do Việt Nam - EU.',
-    image: 'https://vcdn1-dulich.vnecdn.net/2022/05/11/hoan-kiem-lake-7673-1652237235.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=2wB1c0kU7j7iJz4gWb_fWA'
+    image: ''
   },
   {
     id: 'm20', year: '2021',
@@ -201,7 +201,7 @@ export const MILESTONES = [
     duration: '29/12/2020',
     coordinates: [-0.12, 51.50],
     desc: 'Ký kết để duy trì thương mại sau Brexit.',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/London_Skyline_%28125508655%29.jpeg/256px-London_Skyline_%28125508655%29.jpeg'
+    image: ''
   },
   {
     id: 'm21', year: '2022',
@@ -210,7 +210,7 @@ export const MILESTONES = [
     duration: '02/11/2021',
     coordinates: [105.85, 21.02],
     desc: 'Ký trong năm VN làm chủ tịch ASEAN (Hiệu lực 2022).',
-    image: 'https://vcdn1-dulich.vnecdn.net/2022/05/11/hoan-kiem-lake-7673-1652237235.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=2wB1c0kU7j7iJz4gWb_fWA'
+    image: ''
   },
   {
     id: 'm22', year: '2023',
@@ -219,7 +219,7 @@ export const MILESTONES = [
     duration: '25/07/2023',
     coordinates: [34.78, 32.08],
     desc: 'Ký Hiệp định thương mại tự do Việt Nam - Israel.',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Tel_Aviv_Promenade_and_Hotels.jpg/256px-Tel_Aviv_Promenade_and_Hotels.jpg'
+    image: ''
   },
   {
     id: 'm23', year: '2023',
@@ -228,7 +228,7 @@ export const MILESTONES = [
     duration: '10/09/2023',
     coordinates: [105.85, 21.02],
     desc: 'Tuyên bố chung nâng cấp quan hệ (Tổng thống Joe Biden thăm VN).',
-    image: 'https://vcdn1-dulich.vnecdn.net/2022/05/11/hoan-kiem-lake-7673-1652237235.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=2wB1c0kU7j7iJz4gWb_fWA'
+    image: ''
   },
   {
     id: 'm24', year: '2023',
@@ -237,7 +237,7 @@ export const MILESTONES = [
     duration: '27/11/2023',
     coordinates: [139.69, 35.68],
     desc: 'Tuyên bố chung nâng cấp quan hệ (CTN Võ Văn Thưởng thăm Nhật).',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Skyscrapers_of_Shinjuku_2009_January.jpg/256px-Skyscrapers_of_Shinjuku_2009_January.jpg'
+    image: ''
   },
   {
     id: 'm25', year: '2024',
@@ -246,7 +246,7 @@ export const MILESTONES = [
     duration: '07/03/2024',
     coordinates: [149.13, -35.28],
     desc: 'Nâng cấp quan hệ (Thủ tướng Phạm Minh Chính thăm Úc).',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Parliament_House_Canberra_Dusk_Panorama.jpg/256px-Parliament_House_Canberra_Dusk_Panorama.jpg'
+    image: ''
   },
   {
     id: 'm26', year: '2024',
@@ -255,7 +255,7 @@ export const MILESTONES = [
     duration: '07/10/2024',
     coordinates: [2.35, 48.85],
     desc: 'Nâng cấp quan hệ (TBT, CTN Tô Lâm thăm Pháp).',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques_-_Paris_August_2014_%282%29.jpg/256px-La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques_-_Paris_August_2014_%282%29.jpg'
+    image: ''
   },
   {
     id: 'm27', year: '2024',
@@ -264,7 +264,7 @@ export const MILESTONES = [
     duration: '28/10/2024',
     coordinates: [55.27, 25.20],
     desc: 'Ký Hiệp định Đối tác Kinh tế Toàn diện với UAE.',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Dubai_Skylines_at_night_%28Pexels_3787839%29.jpg/256px-Dubai_Skylines_at_night_%28Pexels_3787839%29.jpg'
+    image: ''
   }
 ];
 
