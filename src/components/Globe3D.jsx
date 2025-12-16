@@ -1,64 +1,68 @@
+// src/components/Globe3D.jsx
 import React, { useEffect, useRef, useState } from 'react';
 import Globe from 'react-globe.gl';
-import { GLOBE_DATA } from '../data/content';
 
-const Globe3D = ({ onPointClick }) => {
+const Globe3D = () => {
   const globeEl = useRef();
+  // State để lưu kích thước màn hình
   const [dimensions, setDimensions] = useState({ width: window.innerWidth, height: window.innerHeight });
   const [ready, setReady] = useState(false);
 
+  // --- VỊ TRÍ CỦA useEffect ---
+  // Nhiệm vụ: Lắng nghe sự kiện "Kéo to/thu nhỏ" trình duyệt
   useEffect(() => {
     setReady(true);
-    const handleResize = () => setDimensions({ width: window.innerWidth, height: window.innerHeight });
+    
+    // Hàm cập nhật chiều rộng/cao khi người dùng kéo cửa sổ trình duyệt
+    const handleResize = () => setDimensions({ 
+      width: window.innerWidth, 
+      height: window.innerHeight 
+    });
+
+    // Gắn sự kiện lắng nghe vào cửa sổ (Window)
     window.addEventListener('resize', handleResize);
     
-    if (globeEl.current) {
-      globeEl.current.pointOfView({ lat: 16, lng: 108, altitude: 2.0 }, 1000);
-      globeEl.current.controls().autoRotate = true;
-      globeEl.current.controls().autoRotateSpeed = 0.6;
-    }
+    // Dọn dẹp sự kiện khi thoát trang (Cleanup function)
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, []); 
+  // -----------------------------
 
   if (!ready) return null;
 
   return (
-    // THAY ĐỔI Ở ĐÂY: Dùng z-0 thay vì -z-10, thêm pointer-events-auto
-    <div className="fixed top-0 left-0 w-full h-full z-0 pointer-events-auto cursor-move">
-      {/* Fallback background */}
-      <div className="absolute inset-0 bg-slate-900 -z-10"></div>
-      
+    <div 
+      className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none opacity-60"
+      style={{ filter: 'brightness(1.4) contrast(1.2)' }} 
+    >
       <Globe
         ref={globeEl}
-        width={dimensions.width}
+        width={dimensions.width}   // Nhận kích thước từ state (do useEffect cập nhật)
         height={dimensions.height}
         backgroundColor="rgba(0,0,0,0)"
         globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
-        bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
-        
-        pointsData={GLOBE_DATA.points}
-        pointAltitude={0.15}
-        pointColor="color"
-        pointRadius={0.8}
-        pointLabel="name"
-        onPointClick={onPointClick} 
+        atmosphereColor="#3b82f6" 
+        atmosphereAltitude={0.2}
 
-        arcsData={GLOBE_DATA.arcs}
-        arcColor="color"
-        arcDashLength={0.4}
-        arcDashGap={0.2}
-        arcDashAnimateTime={1500}
-        
-        labelsData={GLOBE_DATA.points}
-        labelLat="lat"
-        labelLng="lng"
-        labelText="name"
-        labelSize={1.5}
-        labelColor={() => '#facc15'}
+        // --- NHIỆM VỤ MỚI: XỬ LÝ XOAY Ở ĐÂY ---
+        // Thay vì dùng useEffect, ta dùng sự kiện "Sẵn sàng" của chính thư viện
+        onGlobeReady={() => {
+          if (globeEl.current) {
+            // 1. Góc nhìn
+            globeEl.current.pointOfView({ lat: 15, lng: 105, altitude: 2.0 });
+
+            // 2. Lệnh xoay (Đặt ở đây đảm bảo 100% chạy được)
+            const controls = globeEl.current.controls();
+            controls.autoRotate = true;     // Bật xoay
+            controls.autoRotateSpeed = 0.5; // Tốc độ
+            
+            // 3. Tắt tương tác chuột
+            controls.enableZoom = false;
+            controls.enablePan = false;
+            
+            controls.update(); 
+          }
+        }}
       />
-      
-      {/* Lớp phủ mờ chân trang - pointer-events-none để click xuyên qua */}
-      <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent pointer-events-none"></div>
     </div>
   );
 };

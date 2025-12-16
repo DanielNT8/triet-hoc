@@ -16,16 +16,16 @@ const HeroOverlay = () => {
           transition={{ duration: 1 }}
           className="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/40 text-primary text-xs font-bold uppercase tracking-[0.2em]"
         >
-          <BookOpen size={14} /> Bài tập nhóm CQ14
+          <BookOpen size={14} /> Bài tập nhóm 9
         </motion.div>
         
         <motion.h1 
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
-          className="text-5xl md:text-7xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400 mb-6 drop-shadow-xl"
+          className="text-5xl md:text-7xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400 mb-6 drop-shadow-xl leading-tight"
         >
-          Hội Nhập <br /> <span className="text-secondary">Kinh Tế Quốc Tế</span>
+          Hội Nhập <br /> <span className="block mt-4 text-secondary">Kinh Tế Quốc Tế</span>
         </motion.h1>
 
         <motion.p 
