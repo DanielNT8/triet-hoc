@@ -48,7 +48,7 @@ const HeroOverlay = () => {
           <span className="bg-clip-text text-transparent bg-gradient-to-b from-slate-100 to-slate-400">
             Hội Nhập 
           </span>
-          <span className=" block mt-8 text-gold-gradient drop-shadow-[0_0_15px_rgba(234,179,8,0.3)] pb-2 pt-3">
+          <span className=" block mt-8 text-gold-gradient drop-shadow-[0_0_15px_rgba(234,179,8,0.3)] pb-2 pt-3 px-4">
             Kinh Tế Quốc Tế
           </span>
         </motion.h1>

@@ -24,7 +24,7 @@ const LessonContent = () => {
           className="relative p-8 md:p-12 rounded-r-2xl border-l-4 border-yellow-600 bg-slate-900/80 backdrop-blur-xl shadow-2xl overflow-hidden group"
         >
           {/* Họa tiết trang trí nền (số thứ tự mờ) */}
-          <div className="absolute -right-10 -top-10 text-[150px] font-serif font-black text-white/5 select-none z-0 group-hover:text-yellow-500/10 transition-colors duration-700">
+          <div className="absolute -right-4 -top-0 text-[120px] font-serif font-black text-white/5 select-none z-0 group-hover:text-yellow-500/10 transition-colors duration-700">
             {index + 1}
           </div>
 
