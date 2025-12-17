@@ -1,5 +1,5 @@
 // src/components/VietnamMap.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
@@ -7,8 +7,9 @@ import { MAP_POINTS, MILESTONES } from '../data/content';
 import { MousePointer2, Navigation, Plane, RotateCcw } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// --- 1. CONFIG LABEL CHỮ ---
-const createTextLabel = (text, size = '10px', color = '#64748b', weight = 'bold', rotation = 0) => {
+// --- 1. CONFIG LABEL CHỮ (CẬP NHẬT: THÊM OFFSET ĐỂ CHỈNH VỊ TRÍ) ---
+// Thêm tham số 'offsetY': Giá trị càng lớn thì chữ càng tụt xuống dưới
+const createTextLabel = (text, size = '10px', color = '#64748b', weight = 'bold', rotation = 0, offsetY = 0) => {
   return L.divIcon({
     className: 'bg-transparent border-none',
     html: `<div style="
@@ -17,13 +18,16 @@ const createTextLabel = (text, size = '10px', color = '#64748b', weight = 'bold'
       white-space: nowrap; text-align: center; font-family: 'Inter', sans-serif; 
       transform: rotate(${rotation}deg); opacity: 0.9; letter-spacing: 0.5px;
     ">${text}</div>`,
-    iconSize: [120, 20], iconAnchor: [60, 10]
+    iconSize: [120, 20], 
+    
+    // --- MẤU CHỐT SỬA LỖI ĐÈ CHỮ Ở ĐÂY ---
+    // [60, 10] là tâm. 
+    // Trừ đi offsetY (ví dụ 25) -> [60, -15] -> Điểm neo nằm phía trên -> Icon bị đẩy xuống dưới
+    iconAnchor: [60, 10 - offsetY] 
   });
 };
 
-// --- 2. ICON GHIM ĐỒNG BỘ (1 KIỂU DUY NHẤT) ---
 const createCustomIcon = (isActive) => {
-  // Mặc định: Vàng (#ffaa00) | Active: Xanh (#00ff9d)
   const mainColor = isActive ? '#00ff9d' : '#ffaa00'; 
   const coreColor = isActive ? '#ccffeb' : '#ffdd99'; 
 
@@ -50,12 +54,12 @@ const createCustomIcon = (isActive) => {
   });
 };
 
-// --- 3. NHÃN QUỐC TẾ + VIỆT NAM ---
 const INTERNATIONAL_LABELS = [
+  { text: "VIỆT NAM", pos: [19.0, 105.0], color: "#e2e8f0", size: "14px" },
   { text: "TRUNG QUỐC", pos: [35.0, 105.0], color: "#64748b" },
   { text: "NHẬT BẢN", pos: [36.0, 138.0], color: "#64748b" },
   { text: "HÀN QUỐC", pos: [36.5, 127.5], color: "#64748b" },
-  { text: "NGA", pos: [55.0, 80.0], color: "#64748b" },
+  { text: "NGA", pos: [62.0, 90.0], color: "#64748b" },
   { text: "KAZAKHSTAN", pos: [48.0, 68.0], color: "#64748b" },
   { text: "THÁI LAN", pos: [15.0, 101.0], color: "#64748b" },
   { text: "MALAYSIA", pos: [4.0, 102.0], color: "#64748b" },
@@ -85,7 +89,24 @@ const VietnamMap = () => {
   const [mapCenter, setMapCenter] = useState([16.0, 107.0]);
   const [mapZoom, setMapZoom] = useState(5);
 
-  // --- HÀM XỬ LÝ CHUNG CHO CẢ LIST VÀ MAP ---
+  // --- 1. ĐÂY LÀ PHẦN XỬ LÝ MỚI (useMemo) MÀ BẠN HỎI ---
+  const cityLabels = useMemo(() => {
+    const unique = new Map();
+    MILESTONES.forEach(m => {
+      const key = `${m.coordinates[0]},${m.coordinates[1]}`;
+      // Chỉ thêm nếu chưa có (tránh trùng lắp)
+      if (!unique.has(key)) {
+        const cityName = m.location.split(',')[0].trim();
+        unique.set(key, {
+          pos: [m.coordinates[1], m.coordinates[0]],
+          text: cityName
+        });
+      }
+    });
+    return Array.from(unique.values());
+  }, []); // [] đảm bảo chỉ tính toán 1 lần khi load trang
+  // -----------------------------------------------------
+
   const handleSelectMilestone = (milestone) => {
     const pointData = {
       id: milestone.id,
@@ -170,26 +191,33 @@ const VietnamMap = () => {
           <MapContainer center={mapCenter} zoom={mapZoom} className="w-full h-full" minZoom={2} maxZoom={8}>
             <TileLayer url="https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png" />
 
-            {/* --- 1. NHÃN CHỮ CỐ ĐỊNH (Gồm HN, HCM, Biển Đảo) --- */}
+            {/* NHÃN CHỦ QUYỀN */}
             <Marker position={[14.5, 112.5]} icon={createTextLabel("BIỂN ĐÔNG", "16px", "#0ea5e9", "900")} interactive={false} />
             <Marker position={[16.3, 111.8]} icon={createTextLabel("QĐ. HOÀNG SA (VN)", "10px", "#e2e8f0", "bold")} interactive={false} />
             <Marker position={[9.0, 113.5]} icon={createTextLabel("QĐ. TRƯỜNG SA (VN)", "10px", "#e2e8f0", "bold")} interactive={false} />
             
-            {/* Thêm nhãn HÀ NỘI và TP.HCM cố định */}
-            <Marker position={[21.02, 105.85]} icon={createTextLabel("HÀ NỘI", "11px", "#94a3b8")} interactive={false} />
-      
-
-            {/* --- 2. NHÃN QUỐC TẾ --- */}
+            {/* NHÃN QUỐC GIA */}
             {INTERNATIONAL_LABELS.map((label, idx) => (
                <Marker 
-                 key={`lbl-${idx}`} 
+                 key={`lbl-country-${idx}`} 
                  position={label.pos} 
-                 icon={createTextLabel(label.text, "10px", label.color)} 
+                 icon={createTextLabel(label.text, label.size || "10px", label.color)} 
                  interactive={false} 
                />
             ))}
 
-            {/* --- 3. ĐIỂM CỐ ĐỊNH (Chỉ Hoàng Sa, Trường Sa) --- */}
+            {/* --- 2. HIỂN THỊ NHÃN THÀNH PHỐ VỚI OFFSET --- */}
+            {cityLabels.map((l, idx) => (
+               <Marker 
+                 key={`lbl-city-${idx}`} 
+                 position={l.pos} 
+                 // offsetY = 25: Đẩy chữ xuống dưới Marker khoảng 25px
+                 icon={createTextLabel(l.text, "11px", "#94a3b8", "bold", 0, 25)} 
+                 interactive={false} 
+               />
+            ))}
+
+            {/* ĐIỂM CỐ ĐỊNH */}
             {MAP_POINTS.map((point) => (
               <Marker 
                 key={point.id} 
@@ -199,13 +227,13 @@ const VietnamMap = () => {
               />
             ))}
 
-            {/* --- 4. ĐIỂM SỰ KIỆN (Bao gồm các sự kiện tại HN, HCM) --- */}
+            {/* ĐIỂM SỰ KIỆN */}
             {MILESTONES.map((m) => (
                <Marker 
                 key={m.id} 
                 position={[m.coordinates[1], m.coordinates[0]]} 
-                icon={createCustomIcon(activePoint.id === m.id)} // Sử dụng chung 1 kiểu Icon
-                eventHandlers={{ click: () => handleSelectMilestone(m) }} // Click vào marker gọi hàm giống click list
+                icon={createCustomIcon(activePoint.id === m.id)} 
+                eventHandlers={{ click: () => handleSelectMilestone(m) }} 
               />
             ))}
             
@@ -238,8 +266,8 @@ const VietnamMap = () => {
                     alt={activePoint.name} 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     onError={(e) => { 
-                    e.target.style.display = 'none'; // Ẩn ảnh bị lỗi
-                    e.target.parentNode.style.backgroundColor = '#1e293b'; // Đổ màu nền xám cho khung
+                      e.target.style.display = 'none'; 
+                      e.target.parentNode.style.backgroundColor = '#1e293b'; 
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
