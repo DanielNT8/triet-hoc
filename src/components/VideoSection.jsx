@@ -41,7 +41,7 @@ const VideoSection = () => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="relative w-full aspect-video rounded-3xl overflow-hidden shadow-2xl border border-white/10 group"
+          className="relative w-full aspect-video rounded-xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-yellow-600/30 group"
         >
           {/* Hiệu ứng nền sáng sau video (Glow effect) */}
           <div className="absolute -inset-1 bg-gradient-to-r from-red-500 to-yellow-500 rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>

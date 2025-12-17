@@ -1,4 +1,3 @@
-// src/App.jsx
 import React from 'react';
 import Globe3D from './components/Globe3D';
 import HeroOverlay from './components/HeroOverlay';
@@ -8,23 +7,27 @@ import LessonContent from './components/LessonContent';
 
 function App() {
   return (
-    <div className="relative min-h-screen font-sans text-slate-200 bg-slate-900 selection:bg-yellow-500 selection:text-black">
+    // 1. THÊM class: bg-grid-pattern
+    <div className="relative min-h-screen font-sans text-slate-200 bg-[#0B1120] selection:bg-yellow-600 selection:text-white overflow-x-hidden">
       
-      {/* Nền Quả địa cầu */}
+      {/* 2. THÊM: Lớp lưới toạ độ phủ lên toàn trang */}
+      <div className="fixed inset-0 z-0 pointer-events-none bg-grid-pattern"></div>
+
       <div className="fixed inset-0 z-0 pointer-events-none">
          <Globe3D onPointClick={() => {}} /> 
       </div>
 
       <div className="relative z-10">
         <HeroOverlay />
-        
-        {/* Bản đồ Việt Nam */}
         <VietnamMap />
-        
-        {/* --- 2. Thêm VideoSection vào đây --- */}
         <VideoSection />
-
         <LessonContent />
+        
+        {/* 3. THÊM: Footer phong cách mới */}
+        <footer className="border-t border-white/10 bg-black/80 backdrop-blur-md py-8 text-center mt-20">
+            <p className="font-serif text-yellow-500/60 tracking-widest text-sm uppercase">Giáo trình Triết học Mác - Lênin</p>
+            <p className="text-slate-500 text-xs mt-2">© 2025 Dự án Nhóm 9 - CQ14</p>
+        </footer>
       </div>
     </div>
   );

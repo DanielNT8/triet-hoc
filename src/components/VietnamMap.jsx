@@ -142,7 +142,7 @@ const VietnamMap = () => {
 
       {/* Header */}
       <div className="max-w-7xl w-full mb-8 text-center">
-        <h2 className="text-3xl md:text-5xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-500 mb-2">
+        <h2 className="text-3xl md:text-5xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-500 mb-2 pb-2 pt-3">
           Bản Đồ Hội Nhập & Chủ Quyền
         </h2>
         <p className="text-slate-400 text-sm md:text-base flex items-center justify-center gap-2">

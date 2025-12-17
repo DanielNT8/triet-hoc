@@ -10,23 +10,42 @@
 }
 
 body {
-  background-color: #0f172a; /* Màu nền chủ đạo */
-  color: #f1f5f9; /* Màu chữ sáng */
+  /* THAY ĐỔI: Đổi màu nền từ #0f172a sang màu đậm hơn #0B1120 cho đúng chất chính trị */
+  background-color: #0B1120; 
+  color: #f1f5f9;
   font-family: 'Inter', sans-serif;
-  overflow-x: hidden; /* Chặn cuộn ngang */
+  overflow-x: hidden;
 }
 
-/* Tùy chỉnh thanh cuộn cho đẹp */
+/* --- PHẦN THÊM MỚI --- */
+
+/* 1. Hiệu ứng nền lưới toạ độ (Grid) */
+.bg-grid-pattern {
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+}
+
+/* 2. Thanh cuộn phong cách "Tài liệu mật" */
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0f172a;
+  background: #0f172a; 
 }
 ::-webkit-scrollbar-thumb {
-  background: #334155;
+  background: #475569; 
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: #fbbf24; /* Vàng */
+}
+
+/* 3. Hiệu ứng chữ vàng kim loại */
+.text-gold-gradient {
+  background: linear-gradient(to bottom, #fde68a, #d97706);
+  -webkit-background-clip: text;
+  color: transparent;
 }
