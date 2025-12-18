@@ -4,6 +4,7 @@ import HeroOverlay from './components/HeroOverlay';
 import VietnamMap from './components/VietnamMap'; 
 import VideoSection from './components/VideoSection';
 import LessonContent from './components/LessonContent';
+import Appendix from './components/Appendix';
 
 function App() {
   return (
@@ -22,10 +23,11 @@ function App() {
         <VietnamMap />
         <VideoSection />
         <LessonContent />
+        <Appendix />
         
         {/* 3. THÊM: Footer phong cách mới */}
         <footer className="border-t border-white/10 bg-black/80 backdrop-blur-md py-8 text-center mt-20">
-            <p className="font-serif text-yellow-500/60 tracking-widest text-sm uppercase">Giáo trình Triết học Mác - Lênin</p>
+            <p className="font-serif text-yellow-500/60 tracking-widest text-sm uppercase">Giáo trình kinh tế chính trị Mác - Lênin</p>
             <p className="text-slate-500 text-xs mt-2">© 2025 Dự án Nhóm 9 - CQ14</p>
         </footer>
       </div>

@@ -28,7 +28,7 @@ const VideoSection = () => {
             className="text-3xl md:text-4xl font-serif font-bold text-white mb-4"
           >
             Hội nhập kinh tế trong không gian văn hóa toàn cầu: 
-            <span className="block mt-4 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-500">
+            <span className="block mt-4 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-500 pt-3">
               Giữ bản sắc hay đánh mất chính mình?
             </span>
           </motion.h2>
